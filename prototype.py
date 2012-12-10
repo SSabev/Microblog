@@ -35,6 +35,10 @@ def teardown_request(exception):
 
 
 @app.route('/')
+def show_about_me():
+    return render_template('about.html')
+
+@app.route('/posts')
 def show_entries():
     cur = g.db.execute('select title, text, id from entries order by id desc')
     entries = [dict(title=row[0], text=row[1], postid=str(row[2])) for row in cur.fetchall()]
