@@ -11,10 +11,11 @@
       </dl>
     </form>
   {% endif %#}
-  <ul class=entries>
-    {% for entry in entries %}
-    <li><a href="posts/{{ entry.postid }}"><h2>{{ entry.title }}</h2></a></li>
-    <li>{{ entry.text|safe }}</li>
+  {% for entry in entries %}
+  <div class=message>
+    <a href="posts/{{ entry.postid }}"><h2>{{ entry.title }}</h2></a></li>
+    <p>{{ entry.text|safe }}<p>
+  </div>
   {% else %}
     <li><em>Unbelievable.  No entries here so far</em>
   {% endfor %}
