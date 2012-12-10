@@ -1,0 +1,23 @@
+<!doctype html>
+<title>MicroBlog</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <a href='/'><h1>MicroBlog</h1></a>
+  <div class=metanav>
+  {% block metanav %}
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+  {% else %}
+  {%if 'post' in request.url %}
+    <a href="/delete/{{ post_id }}">delete entry</a>
+  {% endif%}
+    <a href="{{ url_for('add_entry') }}">add_entry</a>
+    <a href="{{ url_for('logout') }}">log out</a>
+    {% endif %}
+  {% endblock %}
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</div>

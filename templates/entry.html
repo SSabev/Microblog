@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if session.logged_in %}
+<form action="{{ url_for('update_entry') }}" method=POST class=update-entry>
+  <dl>
+    <dt>Title:
+    <dd><textarea type=text rows=1 cols=60 name=title>{{entries[0].title}}</textarea>    <dt>Text:
+    <dd><textarea name=text rows=5 cols=60>{{entries[0].text}}</textarea>
+    <dd><input name="post_id" type=hidden value={{post_id}}>
+    <input type=submit value="Update that thing yo">
+  </dl>
+</form>
+{% endif %}
+  <ul class=entries>
+    {% for entry in entries %}
+    <li><h2>{{ entry.title }}</h2></li>
+    <li>{{ entry.text|safe }}</li>
+  {% else %}
+  {% endfor %}
+  </ul>
+{% endblock %}
+
