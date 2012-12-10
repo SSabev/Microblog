@@ -3,13 +3,13 @@
   {% if session.logged_in %}
 <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
   <dl>
-    <dt>Title:
-    <dd><textarea type=text rows=1 cols=60 name=title></textarea>    
-    <dt>Text:
-    <dd><textarea name=text rows=5 cols=60></textarea>
-    <dd><input type=submit value="Post it!">
+    <input name=title type=text  class="input-block-level" placeholder="Title of the post">
+    <textarea rows="10" name=text placeholder='Your text here' class="text-area-xxlarge"></textarea>
+    <button class="btn btn-large btn-primary" type="submit">Post entry</button>
   </dl>
 </form>
 
-  {% endif %}
+{% endif %}
 {% endblock %}
+
+
