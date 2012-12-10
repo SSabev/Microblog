@@ -88,12 +88,14 @@ def logout():
 def show_entry(post_id):
     db_query=g.db.execute('select title, text from entries where id like(?)',[post_id])
     blog_entry = [dict(title=row[0], text=row[1]) for row in db_query.fetchall()]
-    return render_template('entry.html', entries=blog_entry, post_id=post_id)
+    current_entry=blog_entry[0]
+    return render_template('entry.html', current_entry=current_entry, post_id=post_id)
 
 @app.route('/update_post', methods=['POST'])
 def update_entry():
     if session.get('logged_in'):
         update_dict = request.form
+        flash(update_dict)
         g.db.execute('update entries set title= ?,text= ? where id= ?', [update_dict['title'],update_dict['text'], update_dict['post_id']])
         g.db.commit()
         flash('Entry has been updated')
