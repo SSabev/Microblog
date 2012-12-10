@@ -12,9 +12,8 @@
   <div class="navbar-inner">
       <a class="brand" href="/">MicroBlog</a>
       <ul class="nav">
-          <li><a href="/">About me</a></li>
-          <li><a href="{{ url_for('show_entries') }}">Some thoughts</a></li>
-      {% block metanav %}
+        <li><a href="{{ url_for('show_entries') }}">Some thoughts</a></li>
+        <li><a href="/about">About me</a></li>
         {% if not session.logged_in %}
         <li><a href="{{ url_for('login') }}">Log in</a></li>
         {% else %}
@@ -24,7 +23,6 @@
         <li><a href="{{ url_for('add_entry') }}">Add a new entry</a></li>
         <li><a href="{{ url_for('logout') }}">Log out</a></li>
         {% endif %}
-        {% endblock %}
     </ul>
     </div>
   </div>

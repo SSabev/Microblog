@@ -34,11 +34,11 @@ def teardown_request(exception):
     g.db.close()
 
 
-@app.route('/')
+@app.route('/about')
 def show_about_me():
     return render_template('about.html')
 
-@app.route('/posts')
+@app.route('/')
 def show_entries():
     cur = g.db.execute('select title, text, id from entries order by id desc')
     entries = [dict(title=row[0], text=row[1], postid=str(row[2])) for row in cur.fetchall()]
@@ -113,3 +113,4 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     app.run()
+
