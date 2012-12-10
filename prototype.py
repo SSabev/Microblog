@@ -5,7 +5,7 @@ from flask import Flask, request, session, g, redirect, url_for, \
 from contextlib import closing
 
 # configuration
-DATABASE = '/tmp/flaskr.db'
+DATABASE = '/tmp/microblog.db'
 DEBUG = True
 SECRET_KEY = 'ubersecretKey'
 USERNAME = 'admin'
@@ -95,7 +95,6 @@ def show_entry(post_id):
 def update_entry():
     if session.get('logged_in'):
         update_dict = request.form
-        flash(update_dict)
         g.db.execute('update entries set title= ?,text= ? where id= ?', [update_dict['title'],update_dict['text'], update_dict['post_id']])
         g.db.commit()
         flash('Entry has been updated')

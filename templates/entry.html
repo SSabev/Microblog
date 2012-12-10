@@ -2,7 +2,7 @@
 {% block body %}
 {% if session.logged_in %}
 <form action="{{ url_for('update_entry') }}" method=post class=add-entry>
-    <input name=title type=text  class="input-block-level" placeholder="{{ current_entry.title }}" text=''>
+    <input name=title type=text  class="input-block-level" placeholder="{{ current_entry.title }}" value='{{ current_entry.title }}'>
     <textarea rows="10" name=text placeholder='{{ current_entry.text }}' class="text-area-xxlarge">{{ current_entry.text }}</textarea>
     <input type=hidden name=post_id value={{ post_id }}>
     <button class="btn btn-large btn-primary" type="submit">Update entry</button>
