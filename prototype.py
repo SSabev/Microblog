@@ -5,16 +5,11 @@ from flask import Flask, request, session, g, redirect, url_for, \
 from contextlib import closing
 
 # configuration
-DATABASE = '/tmp/microblog.db'
-DEBUG = True
-SECRET_KEY = 'ubersecretKey'
-USERNAME = 'admin'
-PASSWORD = 'default'
 
+import config
 
 app = Flask(__name__)
-app.config.from_object(__name__)
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+app.config.from_object(config.Config)
 
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
