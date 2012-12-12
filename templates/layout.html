@@ -1,8 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <title>MicroBlog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link rel=stylesheet type=text/css media=screen href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
 <link rel=stylesheet type=text/css media=screen href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
@@ -12,7 +15,6 @@
   <div class="navbar-inner">
       <a class="brand" href="/">MicroBlog</a>
       <ul class="nav">
-        <li><a href="{{ url_for('show_entries') }}">Some thoughts</a></li>
         <li><a href="/about">About me</a></li>
         {% if not session.logged_in %}
         <li><a href="{{ url_for('login') }}">Log in</a></li>
@@ -31,3 +33,5 @@
   {% endfor %}
   {% block body %}{% endblock %}
 </div>
+
+</html>
