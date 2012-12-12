@@ -1,15 +1,15 @@
 from __future__ import with_statement
-import sqlite3
+import sqlite3 
 from flask import Flask, request, session, g, redirect, url_for, \
      abort, render_template, flash
 from contextlib import closing
 
 # configuration
 
-import config
+from config import Config
 
 app = Flask(__name__)
-app.config.from_object(config.Config)
+app.config.from_object(Config)
 
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
