@@ -28,7 +28,6 @@ def before_request():
 def teardown_request(exception):
     g.db.close()
 
-
 @app.route('/about')
 def show_about_me():
     return render_template('about.html')

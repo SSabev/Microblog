@@ -25,9 +25,9 @@ body {
 }
 .form-signin input[type="text"],
 .form-signin input[type="password"] {
-    font-size: 16px;
+    font-size: 14px;
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
     padding: 7px 9px;
 }
 .add-entry {
@@ -49,14 +49,14 @@ body {
 }
 .add-entry input[name='title'], 
 {
-    font-size: 16px;
+    font-size: 14px;
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
 }
 .add-entry textarea
 {
-    font-size: 16px;
+    font-size: 14px;
     height: auto; width: 520px;
     margin-bottom; 15px;
     padding: 7px 9px;
