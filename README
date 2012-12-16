@@ -1,5 +1,5 @@
 This is a small microblog, which I intend to use a personal page later.
-Currently the state of this is just my playground to much about with flask and 
+Currently the state of this is just my playground to muck about with flask and 
 jinja2. It is now quite loosely based on the flask tutorial found on 
 http://flask.pocoo.org. I've modified things a bit and added bootstrap in order
 to make it prettier. 
