@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<title>MicroBlog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-<link rel=stylesheet type=text/css media=screen href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
-<link rel=stylesheet type=text/css media=screen href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <script src="static/js/bootstrap.min.js"></script>
-  <div class="navbar navbar-inverse">
-  <div class="navbar-inner">
-      <a class="brand" href="/">MicroBlog</a>
-      <ul class="nav">
-        <li><a href="/about">About me</a></li>
-        {% if not session.logged_in %}
-        <li><a href="{{ url_for('login') }}">Log in</a></li>
-        {% else %}
-        {%if post_id %}
-        <li><a href="/delete/{{ post_id }}">Delete entry</a></li>
-        {% endif%}
-        <li><a href="{{ url_for('add_entry') }}">Add a new entry</a></li>
-        <li><a href="{{ url_for('logout') }}">Log out</a></li>
-        {% endif %}
-    </ul>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+        <link rel=stylesheet type=text/css media=screen href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ url_for('static', filename='style.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <title>MicroBlog</title>
+    <div class=container-fluid>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="static/js/bootstrap.min.js"></script>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner"> 
+              <a class=brand href="/">MicroBlog</a>
+                <ul class="nav">
+                    <li><a href="/about">About me</a></li>
+                    {% if not session.logged_in %}
+                    <li><a href="{{ url_for('login') }}">Log in</a></li>
+                    {% else %} 
+                    {%if post_id %}
+                    <li><a href="/delete/{{ post_id }}">Delete entry</a></li>
+                    {% endif%}
+                    <li><a href="{{ url_for('add_entry') }}">Add a new entry</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% for message in get_flashed_messages() %}
+        <div class=message>{{ message }}</div>
+        {% endfor %} 
+        {% block body %}
+        {% endblock %}
     </div>
-  </div>
-  {% for message in get_flashed_messages() %}
-    <div class=message>{{ message }}</div>
-  {% endfor %}
-  {% block body %}{% endblock %}
-</div>
-
 </html>

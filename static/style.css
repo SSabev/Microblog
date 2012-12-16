@@ -5,7 +5,6 @@ body {
 }
 
 .form-signin {
-    max-width: 600px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     padding-left: 150px;
@@ -31,7 +30,6 @@ body {
     padding: 7px 9px;
 }
 .add-entry {
-    max-width: 600px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     background-color: #fff;
@@ -63,12 +61,10 @@ body {
 }
 .page
 {
-      width:600px;
       margin-left:auto;
       margin-right:auto;
 }
 .message {
-    max-width: 600px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     background-color: #fff;
@@ -80,6 +76,4 @@ body {
        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
             box-shadow: 0 1px 2px rgba(0,0,0,.05);
     }
-.container{ margin-left:auto; margin-right:auto;}
-
-
+.container-fluid{max-width: 600px;margin-left: auto;margin-right:auto;}
