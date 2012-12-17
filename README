@@ -4,3 +4,16 @@ jinja2. It is now quite loosely based on the flask tutorial found on
 http://flask.pocoo.org. I've modified things a bit and added bootstrap in order
 to make it prettier. 
 So far I can say that flask is awesome!
+
+Just chuck in your own config.py of the form:
+
+class Config(object):
+    DATABASE = '/my/db/is/here'
+    DEBUG = True#don't leave it on on prod systems.
+    SECRET_KEY = 'some_key_goes_here'
+    USERNAME = 'Who_are_you?'
+    PASSWORD = 'yourPassWordHere!'
+
+Also, run it this way:
+
+> python run.py
