@@ -13,8 +13,9 @@
     <p>{{ current_entry.text|safe }}<p>
 </div>
 <div class=comment-section>
+    <h4>Comments:</h4>
     {% for comment in comments %}
-    <div>
+    <div class=comment>
         <a href="mailto:{{ comment.email }}"><h5>{{ comment.name }}</h5></a></li>
         <p align=justify>{{comment.text }}<p>
     </div>
