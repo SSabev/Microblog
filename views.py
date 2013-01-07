@@ -101,6 +101,15 @@ def update_entry():
         flash('Please login!')
         return redirect(url_for('login'))
 
+@app.route('/add_comment', methods=['POST'])
+def add_comment():
+    update_dict = request.form
+    flash(update_dict['name'])
+    flash(update_dict['email'])
+    flash(update_dict['text'])
+    flash(update_dict['post_id'])
+    return redirect('/posts/'+update_dict['post_id'])
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
