@@ -12,15 +12,24 @@
     <h2>{{ current_entry.title }}</h2>
     <p>{{ current_entry.text|safe }}<p>
 </div>
-<form action="{{url_for('add_comment')}}" method=post class=add-comment>
-    <h4> X comments so far on {{current_entry.title}}</h4>
-    <label>Have your say:</label>
-    <input type=hidden name=post_id value={{ post_id }}>
-    <input name=name type=text class="input-block-level" placeholder="Your name here..">
-    <input name=email type=text class="input-block-level" placeholder="Leave your e-mail here..">
-    <textarea rows=5 name=text placeholder='Your say goes here :)' class="text-area-xxlarge"></textarea>
-    <button class="btn btn-large btn-primary" type="submit">Add comment</button>
-</form>
+<div class=comment-section>
+    {% for comment in comments %}
+    <div>
+        <a href="mailto:{{ comment.email }}"><h5>{{ comment.name }}</h5></a></li>
+        <p align=justify>{{comment.text }}<p>
+    </div>
+    {% endfor %}
+
+    <form action="{{url_for('add_comment')}}" method=post class=add-comment>
+        <h4> X comments so far on {{current_entry.title}}</h4>
+        <label>Have your say:</label>
+        <input type=hidden name=post_id value={{ post_id }}>
+        <input name=name type=text class="input-block-level" placeholder="Your name here..">
+        <input name=email type=text class="input-block-level" placeholder="Leave your e-mail here..">
+        <textarea rows=5 name=text placeholder='Your say goes here :)' class="text-area-xxlarge"></textarea>
+        <button class="btn btn-large btn-primary" type="submit">Add comment</button>
+    </form>
+</div>
 {% endif %}
 {% endblock %}
 

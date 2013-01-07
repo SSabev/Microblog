@@ -84,10 +84,11 @@ def logout():
 
 @app.route('/posts/<int:post_id>')
 def show_entry(post_id):
-    db_query=g.db.execute('select title, text from entries where id like(?)',[post_id])
-    blog_entry = [dict(title=row[0], text=row[1]) for row in db_query.fetchall()]
-    current_entry=blog_entry[0]
-    return render_template('entry.html', current_entry=current_entry, post_id=post_id)
+    db_query=g.db.execute('select title, text from entries where id = ?',[post_id])
+    blog_entry = [dict(title=row[0], text=row[1]) for row in db_query.fetchall()][0]
+    comments_result_set = g.db.execute('select email, name, text from comments where p_id = ?',[post_id])
+    comments = [dict(email=row[0], name=row[1], text=[2]) for row in comments_result_set.fetchall()]
+    return render_template('entry.html', current_entry=blog_entry, post_id=post_id, comments=comments)
 
 @app.route('/update_post', methods=['POST'])
 def update_entry():
@@ -103,12 +104,10 @@ def update_entry():
 
 @app.route('/add_comment', methods=['POST'])
 def add_comment():
-    update_dict = request.form
-    flash(update_dict['name'])
-    flash(update_dict['email'])
-    flash(update_dict['text'])
-    flash(update_dict['post_id'])
-    return redirect('/posts/'+update_dict['post_id'])
+    comment_info = request.form
+    g.db.execute('insert into comments (email, name, text, p_id) values (?, ?, ?, ?)', [comment_info['email'], comment_info['name'], comment_info['text'], comment_info['post_id']])
+    g.db.commit()
+    return redirect('/posts/'+comment_info['post_id'])
 
 @app.errorhandler(404)
 def page_not_found(e):
