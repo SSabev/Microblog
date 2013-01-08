@@ -88,7 +88,7 @@ def show_entry(post_id):
     blog_entry = [dict(title=row[0], text=row[1]) for row in db_query.fetchall()][0]
     comments_result_set = g.db.execute('select email, name, text from comments where p_id = ?',[post_id])
     comments = [dict(email=row[0], name=row[1], text=row[2]) for row in comments_result_set.fetchall()]
-    return render_template('entry.html', current_entry=blog_entry, post_id=post_id, comments=comments)
+    return render_template('entry.html', current_entry=blog_entry, post_id=post_id, comments=comments, count=len(comments))
 
 @app.route('/update_post', methods=['POST'])
 def update_entry():
